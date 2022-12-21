@@ -22,7 +22,12 @@
 
     <body>
         <div id="app">
-            
+            <button @click="requestNMail(1)">start</button>
+            <ul>
+                <li v-for="email in emailList">
+
+                </li>
+            </ul>
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>

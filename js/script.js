@@ -6,12 +6,13 @@ function requestOneMail() {
     let result = '';
     axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
         .then(function (responseAPI) {
-            this.result = responseAPI.data.response;
-            this.resultStatus = responseAPI.data.success;
-            console.log(this.result);
-            console.log(this.resultStatus);
+            result = responseAPI.data.response;
+            resultStatus = responseAPI.data.success;
+            console.log(result);
+            console.log(resultStatus);
         } 
     );
+    return result;
 }
 
 
