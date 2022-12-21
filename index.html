@@ -22,12 +22,17 @@
 
     <body>
         <div id="app">
-            <button @click="requestNMail(1)">start</button>
-            <ul>
+            <main class="p-4">
+                <button @click="this.emailList=[]; requestNMail(10)" class="mb-3">start</button>
+            <ul v-if="this.emailList.length==10">
                 <li v-for="email in emailList">
-
+                    {{email}}
                 </li>
             </ul>
+            <div v-else>
+                {{'Caricamento:  ' + (this.emailList.length / 10 * 100) + '%'}}
+            </div>
+            </main>
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>

@@ -1,24 +1,6 @@
 
 
 
-function requestOneMail() {
-    let resultStatus = false;
-    let result = '';
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-        .then(function (responseAPI) {
-            result = responseAPI.data.response;
-            resultStatus = responseAPI.data.success;
-            console.log(result);
-            console.log(resultStatus);
-        } 
-    );
-    return result;
-}
-
-
-
-
-
 
 
 
@@ -38,10 +20,17 @@ createApp({
     },
     methods: {
         requestNMail (n) {
-            while (this.emailList.length < n) {
-                this.emailList.push(requestOneMail());
+            for (let i=0; i<n; i++) {
+                this.requestOneMail();
             }
-            console.log(this.emailList)
+        },
+        requestOneMail() {
+            axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then( (responseAPI) => {
+                    const result = responseAPI.data.response;
+                    this.emailList.push(result);
+                } 
+            );
         }
     }
 }).mount('#app');
